@@ -1,5 +1,7 @@
 package com.example.solidbank;
 
+import org.springframework.stereotype.Component;
+
 public class SavingAccount extends AccountWithdraw{
 
     public SavingAccount(AccountType accountType, String id, String clientID, double balance, boolean withdrawAllowed) {

@@ -1,5 +1,8 @@
 package com.example.solidbank;
 
+import org.springframework.stereotype.Component;
+
+
 public class AccountDeposit extends Account{
 
 

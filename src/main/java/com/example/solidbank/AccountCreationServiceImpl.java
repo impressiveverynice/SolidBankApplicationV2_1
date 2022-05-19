@@ -1,12 +1,15 @@
 package com.example.solidbank;
 
+import org.springframework.stereotype.Service;
+
+@Service
 
 public class AccountCreationServiceImpl implements AccountCreationService{
     AccountDAO accountDAO;
 
     @Override
-    public void create(AccountType accountType, long bankID, String clientID, long accountID) {
-        String accountNumber = String.format("%03d%06d", 1, accountID);
+    public void create(AccountType accountType, long bankID, String clientID, long lastAccountNumber) {
+        String accountNumber = String.format("%03d%06d", 1, lastAccountNumber); //lastaccounnumber 001000001
 
         if(accountType==null) return;
 
@@ -21,7 +24,7 @@ public class AccountCreationServiceImpl implements AccountCreationService{
                 accountDAO.createNewAccount(account);
                 break;
             case SAVING:
-                account = new SavingAccount(accountType, accountNumber, clientID, 0, false);
+                account = new SavingAccount(accountType, accountNumber, clientID, 0, true);
                 accountDAO.createNewAccount(account);
                 break;
         }

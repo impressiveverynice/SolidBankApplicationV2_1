@@ -2,15 +2,17 @@ package com.example.solidbank;
 
 
 
+import org.springframework.stereotype.Repository;
+
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Repository
 public class MemoryAccountDAO implements AccountDAO{
 
     List<Account> accountList = new ArrayList<>();
     @Override
-    public List<Account> getClientAccount(String clientID) {
+    public List<Account> getClientAccounts(String clientID) {
         return accountList;
     }
 
@@ -36,6 +38,12 @@ public class MemoryAccountDAO implements AccountDAO{
 
     @Override
     public Account getClientAccount(String clientID, String accountID) {
+        for (Account account: accountList){
+            if (account.getId().equals(accountID)){
+                System.out.println(accountID);
+                return account;
+            }
+        }
         return null;
     }
 }

@@ -1,8 +1,12 @@
 package com.example.solidbank;
 
-
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+@Service
+
+
 
 public class AccountListingServiceImpl implements AccountListingService {
 
@@ -15,7 +19,6 @@ public class AccountListingServiceImpl implements AccountListingService {
 
     @Override
     public Account getClientAccount(String clientID, String accountID) {
-
         return accountDAO.getClientAccount(clientID, accountID);
     }
 
@@ -26,7 +29,7 @@ public class AccountListingServiceImpl implements AccountListingService {
 
     @Override
     public List<Account> getClientAccounts(String clientID) {
-        return accountDAO.getClientAccount(clientID);
+        return accountDAO.getClientAccounts(clientID);
 
     }
 
