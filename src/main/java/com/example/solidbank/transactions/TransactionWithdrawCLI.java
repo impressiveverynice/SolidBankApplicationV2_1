@@ -25,7 +25,7 @@ public class TransactionWithdrawCLI {
 
     }
 
-    public void withdrawMoney(String clientID){
+    public void withdrawMoney(String clientID) throws Exception {
         Account account = accountListing.getClientAccount(clientID, withdrawDepositOperationCLIUI.requestClientAccountNumber());
         if(account==null){
             System.out.println("Account does not exist!");

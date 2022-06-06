@@ -17,7 +17,7 @@ public class TransactionWithdraw {
         this.transactionDAO = transactionDAO;
     }
 
-    void execute(Account accountWithdraw, double amount){
+    void execute(Account accountWithdraw, double amount) throws Exception {
         accountWithdrawService.withdraw(amount, accountWithdraw);
     }
 }

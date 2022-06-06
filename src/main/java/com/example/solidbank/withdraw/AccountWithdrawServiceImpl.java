@@ -15,7 +15,7 @@ public class AccountWithdrawServiceImpl implements AccountWithdrawService {
     TransactionDAO transactionDAO;
 
     @Override
-    public void withdraw(double amount, Account account) {
+    public void withdraw(double amount, Account account) throws Exception {
         if (account.getBalance()>amount && account.getBalance()>0) {
             account.setBalance(account.getBalance()-amount);
             accountDAO.updateAccount(account.getBalance(),account.getId());
@@ -23,6 +23,7 @@ public class AccountWithdrawServiceImpl implements AccountWithdrawService {
         } else {
             transactionDAO.addTransaction("withdrawal", amount, account.getId(), 1, false);
             System.out.println("There is not enough money");
+            throw new Exception("Not enough money");
         }
     }
 

@@ -16,7 +16,7 @@ public class BankCore {
         this.accountCreationService = accountCreationService;
     }
 
-    void createNewAccount(AccountType accountType, String clientID) {
+    public void createNewAccount(AccountType accountType, String clientID) {
         accountCreationService.create(accountType, id, clientID, lastAccountNumber);
         incrementLastAccountNumber();
     }

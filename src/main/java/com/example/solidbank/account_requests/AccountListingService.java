@@ -14,5 +14,6 @@ public interface AccountListingService {
     Account getClientAccount(String clientID, String accountID);
     AccountWithdraw getClientWithdrawAccount(String clientID, String accountID);
     List<Account>getClientAccounts(String clientID);
-    List<Account> getClientAccountByType(String clientID, AccountType accountType);
+    Account getClientAccountById(String clientID, String accountId) throws Exception;
+    void deleteAccountById(Long id);
 }

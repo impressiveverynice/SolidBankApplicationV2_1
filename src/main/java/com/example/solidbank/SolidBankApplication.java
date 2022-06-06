@@ -1,8 +1,10 @@
 package com.example.solidbank;
 
 
+import com.example.solidbank.account_requests.AccountListingService;
 import com.example.solidbank.transactions.TransactionDepositCLI;
 import com.example.solidbank.transactions.TransactionWithdrawCLI;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,7 +24,7 @@ public class SolidBankApplication implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... arg0) {
+    public void run(String... arg0) throws Exception {
         boolean running = true;
         String clientID = "1";
 
@@ -30,6 +32,7 @@ public class SolidBankApplication implements CommandLineRunner {
         AccountBasicCLI accountBasicCLI = context.getBean(AccountBasicCLI.class);
         TransactionDepositCLI transactionDepositCLI = context.getBean(TransactionDepositCLI.class);
         TransactionWithdrawCLI transactionWithdrawCLI = context.getBean(TransactionWithdrawCLI.class);
+        AccountListingService accountListingService = context.getBean(AccountListingService.class);
 
         String helpMessage = "1 - show accounts\n2 - create account\n3 - deposit\n4 - withdraw\n5 - transfer\n6 - this message\n7 - exit\n";
         System.out.print("Welcome to CLI bank service\n");
@@ -66,7 +69,9 @@ public class SolidBankApplication implements CommandLineRunner {
                     System.out.print("Application Closed\n");
                     running = false;
                     break;
-
+                case "8":
+                    accountListingService.deleteAccountById(1l);
+                        break;
                 default:
                     System.out.print("Command not recognized!\n");
                     break;

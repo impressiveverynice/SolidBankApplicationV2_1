@@ -8,17 +8,24 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+
 
 @Getter
 @Setter
 
 @NoArgsConstructor
+@Entity
 public   class Account {
 
     String clientID;
     double balance;
     private String accountType;
+
     @Column (value = "ACCOUNT_ID")
+    @OneToMany(cascade = CascadeType.REMOVE)
     private int id;
     boolean withdrawAllowed;
 
@@ -29,29 +36,7 @@ public   class Account {
 
 
 
-//    public String getId() {
-//        return id;
-//    }
-//
-//    public void setId(String id) {
-//        this.id = id;
-//    }
-//
-//    public String getClientID() {
-//        return clientID;
-//    }
-//
-//    public void setClientID(String clientID) {
-//        this.clientID = clientID;
-//    }
-//
-//    public double getBalance() {
-//        return balance;
-//    }
-//
-//    public void setBalance(double balance) {
-//        this.balance = balance;
-//    }
+
 
     public boolean isWithdrawAllowed() {
         return withdrawAllowed;

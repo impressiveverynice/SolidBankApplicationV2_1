@@ -33,11 +33,21 @@ public class AccountListingServiceImpl implements AccountListingService {
     @Override
     public List<Account> getClientAccounts(String clientID) {
         return accountDAO.getClientAccounts(clientID);
-
     }
 
     @Override
-    public List<Account> getClientAccountByType(String clientID, AccountType accountType) {
-        return null;
+    public Account getClientAccountById(String clientID, String accountId) throws Exception {
+        Account account = accountDAO.getClientAccount(clientID, accountId);
+        if (account == null) {
+            throw new Exception("Account not found");
+
+        } else {
+            return account;
+        }
+    }
+
+    @Override
+    public void deleteAccountById(Long id) {
+        accountDAO.deleteAccountById(id);
     }
 }

@@ -28,6 +28,7 @@ CREATE TABLE Transactions
     CONSTRAINT PK_TRANSACTIONS PRIMARY KEY (transaction_id)
 );
 
+
 -- INSERT INTO Account_types VALUES(1, 'fixed');
 -- INSERT INTO Account_types VALUES(2, 'checking');
 -- INSERT INTO Account_types VALUES(3, 'saving')

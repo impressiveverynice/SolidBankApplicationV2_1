@@ -4,6 +4,7 @@ package com.example.solidbank.account_requests;
 
 import com.example.solidbank.Account;
 
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.jdbc.repository.query.Modifying;
 import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -24,4 +25,8 @@ public interface AccountDAO extends CrudRepository<Account, Long> {
     @Modifying
     @Query ("UPDATE ACCOUNT SET BALANCE=:amount  WHERE ACCOUNT_ID=:id")
     void updateAccount(double amount, int id);
+    @Modifying
+    @Query ("DELETE FROM ACCOUNT WHERE ACCOUNT_ID=:id")
+    void deleteAccountById(Long id);
+
 }
