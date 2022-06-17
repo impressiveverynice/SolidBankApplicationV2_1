@@ -1,32 +1,28 @@
 package com.example.solidbank;
 
 import com.example.solidbank.account_creation.AccountType;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Column;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import lombok.*;
 
 
-@Getter
-@Setter
 
+import javax.persistence.*;
+
+
+@Data
 @NoArgsConstructor
 @Entity
-public   class Account {
+public class Account {
 
+    @Id
+    @Column (name = "ACCOUNT_ID")
+    private Integer id;
+    @Column (name = "CLIENT_ID")
     String clientID;
+    @Column (name = "BALANCE")
     double balance;
+    @Column (name = "ACCOUNT_TYPE")
     private String accountType;
-
-    @Column (value = "ACCOUNT_ID")
-    @OneToMany(cascade = CascadeType.REMOVE)
-    private int id;
+    @Column (name = "WITHDRAW_ALLOWED")
     boolean withdrawAllowed;
 
 

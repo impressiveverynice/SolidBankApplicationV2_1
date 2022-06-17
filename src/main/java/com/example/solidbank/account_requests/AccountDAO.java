@@ -12,9 +12,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 @Repository
-public interface AccountDAO extends CrudRepository<Account, Long> {
+public interface AccountDAO extends CrudRepository<Account, Integer> {
 
-    @Query("SELECT * FROM ACCOUNT WHERE CLIENT_ID=:clientID")
+    @Query("SELECT * FROM Account WHERE CLIENT_ID=:clientID")
     List<Account> getClientAccounts(String clientID);
     @Modifying
     @Query ("INSERT INTO ACCOUNT(ACCOUNT_TYPE, BALANCE, CLIENT_ID, WITHDRAW_ALLOWED) VALUES (:accountType, :balance, :clientID, :withdrawAllowed)")

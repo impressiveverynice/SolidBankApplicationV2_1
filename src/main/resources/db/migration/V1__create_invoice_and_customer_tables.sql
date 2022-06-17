@@ -1,11 +1,11 @@
 CREATE TABLE Account
 (
-    account_id INTEGER  NOT NULL AUTO_INCREMENT,
+    account_id INTEGER  NOT NULL AUTO_INCREMENT PRIMARY KEY ,
     account_type NVARCHAR(40),
     balance DOUBLE PRECISION NOT NULL,
     client_id INTEGER NOT NULL,
-    withdraw_allowed BOOL,
-    CONSTRAINT PK_Account PRIMARY KEY  (account_id)
+    withdraw_allowed BOOL
+
 );
 
 -- CREATE TABLE Account_types
@@ -24,11 +24,24 @@ CREATE TABLE Transactions
     account_id NVARCHAR(40),
     client_id INT NOT NULL,
     transaction_status BIT NOT NULL,
-    CURRENTDATE date DEFAULT CURRENT_TIMESTAMP(),
-    CONSTRAINT PK_TRANSACTIONS PRIMARY KEY (transaction_id)
+    CURRENTDATE date DEFAULT CURRENT_TIMESTAMP()
+
 );
 
+create table ROLE_ENTITY
+(
+    id   INTEGER  not null AUTO_INCREMENT,
+    name varchar(20) not null,
+    CONSTRAINT PK_ROLE_ENTITY primary key (id)
+);
+insert into ROLE_ENTITY(name) values ('ROLE_ADMIN');
+insert into ROLE_ENTITY(name) values ('ROLE_USER');
 
--- INSERT INTO Account_types VALUES(1, 'fixed');
--- INSERT INTO Account_types VALUES(2, 'checking');
--- INSERT INTO Account_types VALUES(3, 'saving')
+create table USER_ENTITY
+(
+    id  INTEGER not null AUTO_INCREMENT UNIQUE,
+    login    varchar(50) NOT NULL UNIQUE ,
+    password varchar(500) NOT NULL,
+    role  varchar(20)  not null,
+    CONSTRAINT PK_USER_ENTITY primary key (id)
+);
